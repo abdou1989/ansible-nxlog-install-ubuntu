@@ -12,6 +12,6 @@
     - name: Create Certificate directory
       file: path=/etc/pki/tls/certs/ state=directory mode=0755
     - name: Upload Certificate :
-      copy: src=/etc/pki/tls/certs/logstash-forwarder.crt  dest=/etc/pki/tls/certs/logstash-forwarder.crt  
+      copy: src=Path to certificate  dest=Path to certificate  
     - name: start nxlog 
       service: name=nxlog state=restarted 
