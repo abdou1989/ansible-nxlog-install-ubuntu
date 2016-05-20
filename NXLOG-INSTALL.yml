@@ -1,0 +1,18 @@
+---
+- hosts: 192.168.10.124
+  tasks: 
+    - name: Install Dependies
+      command:  apt-get -f install -y 
+    - name: Install Nxlog  server
+      action: shell cd /opt ; wget https://nxlog.co/system/files/products/files/1/nxlog-ce_2.9.1504_ubuntu_1404_amd64.deb ; dpkg -i nxlog-ce_2.9.1504_ubuntu_1404_amd64.deb
+    - name: Install Depends
+      command:  apt-get -f install -y
+    - name: Upload Nxlog Documents
+      copy: src=/etc/nxlog/nxlog.conf dest=/etc/nxlog/nxlog.conf
+
+    - name: Create Certificate directory
+      file: path=/etc/pki/tls/certs/ state=directory mode=0755
+    - name: Upload Nxlog Documents
+      copy: src=/etc/pki/tls/certs/logstash-forwarder.crt  dest=/etc/pki/tls/certs/logstash-forwarder.crt  
+    - name: start nxlog 
+      service: name=nxlog state=restarted 
