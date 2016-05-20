@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.10.124
+- hosts: CLT-NAME
   tasks: 
     - name: Install Dependies
       command:  apt-get -f install -y 
